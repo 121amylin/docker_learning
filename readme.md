@@ -40,21 +40,29 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.191.0/containers/javascript-node
 {
   "name": "Node.js",
+  //來源設定
   "build": {
     //建置方式
-    "dockerfile": "Dockerfile",
+    "image":"node:12.22.3", //第二種方法(不用dockerfile那支檔案)
+    // "dockerfile": "Dockerfile",  //第一種方法
     // Update 'VARIANT' to pick a Node version: 12, 14, 16
     "args": { "VARIANT": "14" }
   },
   // Set *default* container specific settings.json values on container create.
-  // 可以做vscode的設定
+
+
+  // VS Code的設定
   "settings": {},
+
+
   // Add the IDs of extensions you want installed when the container is created.
   //預設使用外掛
   "extensions": [
     "dbaeumer.vscode-eslint"
   ],
   // forwardPorts 外外面連結的port設定，可以用本機測網頁
+
+  //container 相關設定
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
   // Use 'postCreateCommand' to run commands after the container is created.
@@ -82,3 +90,19 @@ FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 # [Optional] Uncomment if you want to install more global node modules
 # RUN su node -c "npm install -g <your-package-list-here>"
 ```
+#### 【VS Code Remote Container】
+- images 很佔空間，可以不需要
+- 外掛用 「識別碼安裝」
+```javascript
+ "extensions": [
+    "dbaeumer.vscode-eslint",
+    ...
+  ],
+```
+
+- Dockerfile
+```javascript
+FROM node 12.22.3
+```
+
+- docker hub
